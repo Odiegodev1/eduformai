@@ -3,6 +3,7 @@ import { Geist, Geist_Mono, Inter, Sora } from "next/font/google";
 import "./globals.css";
 import { cn } from "@/lib/utils";
 import { Analytics } from "@vercel/analytics/next"
+import Script from "next/script";
 
 const inter = Inter({subsets:['latin'],variable:'--font-sans'});
 const geistSans = Sora({
@@ -73,6 +74,20 @@ export default function RootLayout({
       className={cn("h-full", "antialiased", geistSans.className, geistSans.variable, geistMono.variable, "font-sans", inter.variable)}
     >
       <body className="min-h-full flex flex-col">
+          <Script
+          src="https://www.googletagmanager.com/gtag/js?id=G-NBX4ZH64EP"
+          strategy="afterInteractive"
+        />
+
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+
+            gtag('config', 'G-NBX4ZH64EP');
+          `}
+        </Script>
         {children}
         <Analytics />
       </body>
