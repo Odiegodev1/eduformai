@@ -22,13 +22,13 @@ export const metadata: Metadata = {
     template: "%s | EduForm AI",
   },
   description: "Crie formulários, questionários e pesquisas automatizadas com o poder da Inteligência Artificial. Potencialize a educação e a coleta de dados de forma simples.",
-  keywords: ["EduForm AI", "formulários com IA", "inteligência artificial educação", "criar questionários online", "gerador de formulários"],
+  keywords: ["EduForm AI", "formulários com IA","EduForm","inteligência artificial educação", "criar questionários online", "gerador de formulários"],
   authors: [{ name: "Sua Equipe/Sua Empresa" }],
   creator: "EduForm AI",
   openGraph: {
     title: "EduForm AI | Formulários Inteligentes com IA",
     description: "Crie formulários e questionários automatizados com o poder da Inteligência Artificial.",
-    url: "https://seu-dominio.com.br", // Substitua pelo seu link real
+    url: "https://eduform.website/", // Substitua pelo seu link real
     siteName: "EduForm AI",
     locale: "pt_BR",
     type: "website",
