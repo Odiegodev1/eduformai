@@ -17,32 +17,48 @@ const geistMono = Geist_Mono({
 
 // --- CONFIGURAÇÃO DE SEO OTIMIZADA ---
 export const metadata: Metadata = {
+  metadataBase: new URL("https://eduform.website"),
+
   title: {
-    default: "EduForm AI | Criação de Formulários Inteligentes com IA",
+    default: "Gerador de Questionários com IA para Professores | EduForm AI",
     template: "%s | EduForm AI",
   },
-  description: "Crie formulários, questionários e pesquisas automatizadas com o poder da Inteligência Artificial. Potencialize a educação e a coleta de dados de forma simples.",
-  keywords: ["EduForm AI", "formulários com IA","EduForm","inteligência artificial educação", "criar questionários online", "gerador de formulários"],
-  authors: [{ name: "Sua Equipe/Sua Empresa" }],
-  creator: "EduForm AI",
+
+  description:
+    "Crie provas, formulários e questionários automaticamente com IA. Ferramenta ideal para professores economizarem tempo.",
+
+  keywords: [
+    "gerador de provas com IA",
+    "questionário com IA",
+    "criar formulário online",
+    "ferramenta para professores",
+    "alternativa google forms",
+    "IA para educação",
+  ],
+
   openGraph: {
-    title: "EduForm AI | Formulários Inteligentes com IA",
-    description: "Crie formulários e questionários automatizados com o poder da Inteligência Artificial.",
-    url: "https://eduform.website/", // Substitua pelo seu link real
+    title: "EduForm AI",
+    description:
+      "Crie provas e questionários automaticamente com IA.",
+    url: "https://eduform.website",
     siteName: "EduForm AI",
     locale: "pt_BR",
     type: "website",
   },
-  twitter: {
-    card: "summary_large_image",
-    title: "EduForm AI | Formulários Inteligentes com IA",
-    description: "Crie formulários e questionários automatizados com o poder da Inteligência Artificial.",
+
+  alternates: {
+    canonical: "https://eduform.website",
   },
+
   robots: {
     index: true,
     follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+    },
   },
-};
+}
 // -------------------------------------
 
 export default function RootLayout({
