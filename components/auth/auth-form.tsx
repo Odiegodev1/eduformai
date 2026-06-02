@@ -12,6 +12,7 @@ import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Separator } from "@/components/ui/separator"
 import { GoogleIcon } from "@/components/google-icon"
+import { LegalAccept } from "../legal-accept"
 
 export function AuthForm({ mode }: { mode: "login" | "signup" }) {
   const router = useRouter()
@@ -20,15 +21,6 @@ export function AuthForm({ mode }: { mode: "login" | "signup" }) {
   const isSignup = mode === "signup"
 
 
-  function handleSubmit(e: React.FormEvent) {
-    e.preventDefault()
-    setLoading(true)
-    setTimeout(() => {
-      setLoading(false)
-      alert(isSignup ? "Conta criada com sucesso!" : "Bem-vindo de volta!")
-      router.push("/dashboard")
-    }, 1200)
-  }
 
   async function handleGoogle() {
     await signIn("google", {redirectTo: "/dashboard"})
@@ -62,34 +54,14 @@ export function AuthForm({ mode }: { mode: "login" | "signup" }) {
         Continuar com Google
       </Button>
 
-      <div className="my-5 flex items-center gap-3">
-        <Separator className="flex-1" />
-        <span className="text-xs text-muted-foreground">ou</span>
-        <Separator className="flex-1" />
-      </div>
-
-   
-
-      <p className="mt-6 text-center text-sm text-muted-foreground">
-        {isSignup ? "Já tem uma conta? " : "Ainda não tem conta? "}
-        <Link href={isSignup ? "/login" : "/signup"} className="font-medium text-primary hover:underline">
-          {isSignup ? "Entrar" : "Cadastre-se"}
-        </Link>
-      </p>
-
-      {isSignup && (
-        <p className="mt-4 text-center text-xs text-muted-foreground">
-          Ao criar uma conta você concorda com nossos{" "}
-          <Link href="#" className="underline">
-            Termos
-          </Link>{" "}
-          e{" "}
-          <Link href="#" className="underline">
-            Política de Privacidade
-          </Link>
-          .
-        </p>
-      )}
+     
+        <div className="mt-4 text-center text-xs text-muted-foreground">
+         
+              <LegalAccept />
+         
+          
+        </div>
+  
     </div>
   )
 }

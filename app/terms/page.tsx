@@ -1,67 +1,105 @@
-export default function TermsPage() {
-return ( <main className="mx-auto max-w-4xl p-8 space-y-6"> <h1 className="text-4xl font-bold">
-Termos de Serviço </h1>
+import Link from "next/link"
+
+export default function PrivacyPage() {
+return ( <main className="min-h-screen bg-background"> <section className="mx-auto max-w-4xl px-6 py-16"> <div className="space-y-6"> <div> <p className="text-sm font-medium text-primary">
+EduFormAI </p>
 
 
-  <p className="text-muted-foreground">
-    Última atualização: 2026
-  </p>
+        <h1 className="mt-2 text-5xl font-bold tracking-tight">
+          Política de Privacidade
+        </h1>
 
-  <section className="space-y-4">
-    <h2 className="text-2xl font-semibold">
-      Uso da plataforma
-    </h2>
+        <p className="mt-4 text-muted-foreground">
+          Última atualização: Junho de 2026
+        </p>
+      </div>
 
-    <p>
-      O EduFormAI fornece ferramentas
-      de geração de formulários e quizzes
-      utilizando inteligência artificial.
-    </p>
-  </section>
+      <div className="rounded-2xl border bg-card p-8 shadow-sm">
+        <div className="space-y-10">
+          <section className="space-y-4">
+            <h2 className="text-2xl font-semibold">
+              1. Informações coletadas
+            </h2>
 
-  <section className="space-y-4">
-    <h2 className="text-2xl font-semibold">
-      Responsabilidades do usuário
-    </h2>
+            <p className="leading-7 text-muted-foreground">
+              O EduFormAI coleta informações
+              básicas fornecidas pelo login
+              Google, incluindo nome, email
+              e foto de perfil, além de dados
+              relacionados aos formulários
+              criados pelo usuário.
+            </p>
+          </section>
 
-    <ul className="list-disc pl-6 space-y-2">
-      <li>Não utilizar a plataforma para fins ilegais</li>
-      <li>Não abusar da infraestrutura</li>
-      <li>Respeitar limites do plano contratado</li>
-    </ul>
-  </section>
+          <section className="space-y-4">
+            <h2 className="text-2xl font-semibold">
+              2. Como usamos seus dados
+            </h2>
 
-  <section className="space-y-4">
-    <h2 className="text-2xl font-semibold">
-      Assinaturas
-    </h2>
+            <ul className="list-disc space-y-3 pl-6 text-muted-foreground">
+              <li>
+                Criar formulários com IA
+              </li>
 
-    <p>
-      Planos pagos podem ser cancelados
-      a qualquer momento pelo usuário.
-    </p>
-  </section>
+              <li>
+                Integrar com Google Forms
+              </li>
 
-  <section className="space-y-4">
-    <h2 className="text-2xl font-semibold">
-      Limitação de responsabilidade
-    </h2>
+              <li>
+                Melhorar a experiência da plataforma
+              </li>
 
-    <p>
-      O EduFormAI não se responsabiliza
-      por conteúdos gerados incorretamente
-      pela inteligência artificial.
-    </p>
-  </section>
+              <li>
+                Gerenciar planos e assinaturas
+              </li>
+            </ul>
+          </section>
 
-  <section className="space-y-4">
-    <h2 className="text-2xl font-semibold">
-      Contato
-    </h2>
+          <section className="space-y-4">
+            <h2 className="text-2xl font-semibold">
+              3. Compartilhamento
+            </h2>
 
-    <p>
-      Email: suporte@eduformai.com
-    </p>
+            <p className="leading-7 text-muted-foreground">
+              O EduFormAI não vende dados
+              pessoais para terceiros.
+            </p>
+          </section>
+
+          <section className="space-y-4">
+            <h2 className="text-2xl font-semibold">
+              4. Segurança
+            </h2>
+
+            <p className="leading-7 text-muted-foreground">
+              Utilizamos práticas modernas
+              de segurança, autenticação e
+              criptografia para proteger os
+              dados dos usuários.
+            </p>
+          </section>
+
+          <section className="space-y-4">
+            <h2 className="text-2xl font-semibold">
+              5. Contato
+            </h2>
+
+            <p className="text-muted-foreground">
+              suporte@eduformai.com
+            </p>
+          </section>
+        </div>
+      </div>
+
+      <div className="flex gap-4">
+        <Link
+          href="/terms"
+          className="text-sm text-primary underline"
+        >
+          Ver Termos de Serviço
+        </Link>
+      </div>
+    </div>
   </section>
 </main>
 
