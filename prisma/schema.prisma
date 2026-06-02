@@ -1,0 +1,162 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Get a free hosted Postgres database in seconds: `npx create-db`
+
+generator client {
+  provider = "prisma-client-js"
+  output   = "../lib/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model Account {
+  id                 String  @id @default(cuid())
+  userId             String  @map("user_id")
+  type               String
+  provider           String
+  providerAccountId  String  @map("provider_account_id")
+  refresh_token      String? @db.Text
+  access_token       String? @db.Text
+  expires_at         Int?
+  token_type         String?
+  scope              String?
+  id_token           String? @db.Text
+  session_state      String?
+ 
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+ 
+  @@unique([provider, providerAccountId])
+  @@map("accounts")
+}
+ 
+model Session {
+  id           String   @id @default(cuid())
+  sessionToken String   @unique @map("session_token")
+  userId       String   @map("user_id")
+  expires      DateTime
+  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+ 
+  @@map("sessions")
+}
+ 
+model User {
+  id            String    @id @default(cuid())
+  name          String?
+  email         String?   @unique
+  emailVerified DateTime? @map("email_verified")
+  image         String?
+  accounts      Account[]
+  sessions      Session[]
+googleConnected Boolean @default(false)
+  planId String?
+
+    stripeCustomerId     String?
+  stripeSubscriptionId String?
+  subscriptionStatus   String?
+
+  formsUsed Int @default(0)
+  forms Form[]
+  generations AiGeneration[]
+ plan Plan? @relation(fields: [planId], references: [id])
+  @@map("users")
+}
+ 
+model VerificationToken {
+  identifier String
+  token      String
+  expires    DateTime
+ 
+  @@unique([identifier, token])
+  @@map("verification_tokens")
+}
+
+
+model Form {
+id String @id @default(cuid())
+
+title String
+subject String
+theme String
+grade String
+difficulty String
+language String
+questionType String
+questionCount Int
+
+googleFormId String?
+googleFormUrl String?
+
+status FormStatus @default(PROCESSING)
+
+createdAt DateTime @default(now())
+updatedAt DateTime @updatedAt
+
+userId String
+user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+questions Question[]
+
+@@map("forms")
+}
+
+model Question {
+id String @id @default(cuid())
+
+question String
+explanation String?
+
+options Json?
+
+correctAnswer String
+
+order Int
+
+createdAt DateTime @default(now())
+
+formId String
+form Form @relation(fields: [formId], references: [id], onDelete: Cascade)
+
+@@map("questions")
+}
+
+model AiGeneration {
+id String @id @default(cuid())
+
+prompt String @db.Text
+response Json
+
+tokensUsed Int?
+
+createdAt DateTime @default(now())
+
+userId String
+user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+@@map("ai_generations")
+}
+
+enum FormStatus {
+PROCESSING
+COMPLETED
+ERROR
+}
+
+
+model Plan {
+  id String @id @default(cuid())
+
+  name String
+  slug String @unique
+
+  maxForms Int
+  maxQuestions Int
+
+  stripePriceId String?
+
+  createdAt DateTime @default(now())
+
+  users User[]
+}
